@@ -15,10 +15,10 @@ import com.algaworks.cobranca.repository.filter.TituloFilter;
 @Service
 public class ClienteService {
 
-	
+
 	@Autowired
 	private ClienteRepository repository;
-	
+
 	public void salvar(Cliente cliente) {
 		try {
 			repository.save(cliente);
@@ -26,9 +26,22 @@ public class ClienteService {
 			throw new IllegalArgumentException("errro");
 		}
 	}
-	
+
 	public List<Cliente> filtrar(ClienteFilter filtro) {
 		String nome = filtro.getNome() == null ? "%" : filtro.getNome();
 		return repository.findByNomeContaining(nome);
 	}
+
+	public ClienteRepository getRepository() {
+		return repository;
+	}
+
+	public void setRepository(ClienteRepository repository) {
+		this.repository = repository;
+	}
+
+	public List<Cliente> findAll(){
+		return getRepository().findAll();
+	}
+
 }

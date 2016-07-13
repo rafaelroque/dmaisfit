@@ -60,4 +60,10 @@ public class ClienteController {
 		return mv;
 	}
 	
+	//@RequestMapping("/todos")
+	public List<Cliente> todos(){
+		List<Cliente> l = service.getRepository().findAll(); 
+		return l ;
+	}
+	
 }

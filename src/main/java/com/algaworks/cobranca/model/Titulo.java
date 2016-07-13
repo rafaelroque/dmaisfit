@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMax;
@@ -19,6 +21,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
+
 
 @Entity
 public class Titulo {
@@ -44,6 +47,10 @@ public class Titulo {
 	
 	@Enumerated(EnumType.STRING)
 	private StatusTitulo status;
+	
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
 
 	public Long getCodigo() {
 		return codigo;
@@ -113,5 +120,15 @@ public class Titulo {
 			return false;
 		return true;
 	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	
 
 }

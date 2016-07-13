@@ -19,6 +19,7 @@ import com.algaworks.cobranca.model.StatusTitulo;
 import com.algaworks.cobranca.model.Titulo;
 import com.algaworks.cobranca.repository.filter.TituloFilter;
 import com.algaworks.cobranca.service.CadastroTituloService;
+import com.algaworks.cobranca.service.ClienteService;
 
 @Controller
 @RequestMapping("/titulos")
@@ -28,11 +29,15 @@ public class TituloController {
 	
 	@Autowired
 	private CadastroTituloService cadastroTituloService;
+	
+	@Autowired
+	private ClienteService clienteService;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(new Titulo());
+		mv.addObject("clientes",clienteService.findAll());
 		return mv;
 	}
 	
