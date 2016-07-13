@@ -13,6 +13,7 @@
 
 .navbar-brand {
 	padding-top: 12px;
+	float:left;
 }
 
 .aw-link-panel {
@@ -20,7 +21,22 @@
 	padding: 0px;
 }
 
+.aw-menu-panel {
+	float: left;
+	
+}
+
 .aw-titulo-panel {
 	float: left;
 	padding-top: 2px;
+}
+
+#wrapper ul
+{
+   float: left;
+   padding-left: 0pt;
+}
+
+a #menu{
+	float:left;
 }
